@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Services.dart';
 
-class Signuppage extends StatelessWidget {
+class Signuppage extends StatefulWidget {
   const Signuppage({super.key});
 
+  @override
+  State<Signuppage> createState() => _SignuppageState();
+}
+
+class _SignuppageState extends State<Signuppage> {
+  TextEditingController Namecontroller = TextEditingController();
+  TextEditingController Emailcontroller = TextEditingController();
+  TextEditingController Passwordcontroller = TextEditingController();
+  // TextEditingController Cpasswordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +60,7 @@ class Signuppage extends StatelessWidget {
                   children: [
                     SizedBox(height: 50),
                     TextField(
+                      controller: Namecontroller,
                       style: TextStyle(
                         color: const Color.fromARGB(255, 6, 6, 6),
                       ),
@@ -72,6 +83,7 @@ class Signuppage extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     TextField(
+                      controller: Emailcontroller,
                       style: TextStyle(
                         color: const Color.fromARGB(255, 6, 6, 6),
                       ),
@@ -94,6 +106,7 @@ class Signuppage extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     TextField(
+                      controller: Passwordcontroller,
                       obscureText: true,
                       style: TextStyle(
                         color: const Color.fromARGB(255, 6, 6, 6),
@@ -116,7 +129,17 @@ class Signuppage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 40),
-                    ElevatedButton(onPressed: () {}, child: Text('Sign up')),
+                    ElevatedButton(
+                      onPressed: () {
+                        Register(
+                          Username: Namecontroller.text,
+                          Email: Emailcontroller.text,
+                          password: Passwordcontroller.text,
+                          context: context,
+                        );
+                      },
+                      child: Text('Sign up'),
+                    ),
                   ],
                 ),
               ),

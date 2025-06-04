@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Forget.dart';
+import 'package:flutter_application_1/Homepage.dart';
+import 'package:flutter_application_1/Services.dart';
 import 'package:flutter_application_1/Signuppage.dart';
 
-class Loginpage extends StatelessWidget {
+class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
 
+  @override
+  State<Loginpage> createState() => _LoginpageState();
+}
+
+class _LoginpageState extends State<Loginpage> {
+  TextEditingController Emailcontroller = TextEditingController();
+  TextEditingController Passwordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +32,10 @@ class Loginpage extends StatelessWidget {
               fontStyle: FontStyle.italic,
             ),
           ),
+
           SizedBox(height: 150),
           TextField(
+            controller: Emailcontroller,
             style: TextStyle(color: const Color.fromARGB(255, 6, 6, 6)),
             decoration: InputDecoration(
               prefix: Icon(Icons.email),
@@ -45,6 +56,7 @@ class Loginpage extends StatelessWidget {
           ),
           SizedBox(height: 25),
           TextField(
+            controller: Passwordcontroller,
             obscureText: true,
             style: TextStyle(color: const Color.fromARGB(255, 8, 8, 8)),
             decoration: InputDecoration(
@@ -76,7 +88,13 @@ class Loginpage extends StatelessWidget {
             child: Text("Forget Password ?"),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              login(
+                email: Emailcontroller.text,
+                password: Passwordcontroller.text,
+                context: context,
+              );
+            },
             child: Text("LOGIN", style: TextStyle(fontWeight: FontWeight.bold)),
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromARGB(255, 86, 85, 85),

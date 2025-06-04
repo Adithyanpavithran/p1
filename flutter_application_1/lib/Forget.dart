@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Services.dart';
 
-class Forget extends StatelessWidget {
+class Forget extends StatefulWidget {
   const Forget({super.key});
 
+  @override
+  State<Forget> createState() => _ForgetState();
+}
+
+class _ForgetState extends State<Forget> {
+  TextEditingController Emailcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +55,7 @@ class Forget extends StatelessWidget {
                   children: [
                     SizedBox(height: 50),
                     TextField(
+                      controller: Emailcontroller,
                       style: TextStyle(
                         color: const Color.fromARGB(255, 6, 6, 6),
                       ),
@@ -70,7 +78,9 @@ class Forget extends StatelessWidget {
                     ),
                     SizedBox(height: 40),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        forget(email: Emailcontroller.text, context: context);
+                      },
                       child: Text('Send Confirmation'),
                     ),
                   ],
