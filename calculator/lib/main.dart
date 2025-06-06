@@ -1,5 +1,6 @@
-import 'package:calculator/Calculator.dart';
-import 'package:calculator/Calculatorios.dart';
+
+import 'package:calculator/Ui.dart';
+import 'package:calculator/Watsapp.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Calios(),
+      home: Watsapp(),
     );
   }
 }
